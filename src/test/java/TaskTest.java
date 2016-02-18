@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 
 public class TaskTest {
 
+  @Rule
+  public ClearRule clearRule = new ClearRule();
+
   @Test
   public void Task_instantiatesCorrectly_true() {
     Task myTask = new Task("Mow the lawn");
@@ -18,9 +21,15 @@ public class TaskTest {
   }
 
   @Test
+  public void isComplete_isFalseAfterInstantion_false() {
+    Task myTask = new Task("Mow the lawn");
+    assertEquals(false, myTask.isCompleted());
+  }
+
+  @Test
   public void getCreateAt_instantiatesWithCurrentTime_today() {
     Task myTask = new Task("Mow the lawn");
-  assertEquals(LocalDateTime.now().getDayOfWeek(), myTask.getCreateAt().getDayOfWeek());
+    assertEquals(LocalDateTime.now().getDayOfWeek(), myTask.getCreateAt().getDayOfWeek());
   }
 
   @Test

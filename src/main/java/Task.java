@@ -23,16 +23,24 @@ public class Task {
     return mDescription;
   }
 
+  public boolean isCompleted() {
+    return mCompleted;
+  }
+
   public LocalDateTime getCreateAt() {
     return mCreatedAt;
   }
 
-  public static ArrayList<Task> all() {
-    return instances;
-  }
-
   public int getId() {
     return mId;
+  }
+
+  public void completeTask() {
+    mCompleted = true;
+  }
+
+  public static ArrayList<Task> all() {
+    return instances;
   }
 
   public static Task find(int id) {
