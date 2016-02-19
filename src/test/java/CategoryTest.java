@@ -10,15 +10,19 @@ public class CategoryTest {
 
   @Test
   public void Category_instantiatesCorrectly_true() {
-    Category myCategory = new Category("Homework");
+    Category myCategory = new Category("Work");
     assertEquals(true, myCategory instanceof Category);
   }
 
   public void Category_hasName_true() {
-    Category myCategory = new Category("Homework");
-    assertEquals("Homework", myCategory.getName());
+    Category myCategory = new Category("Work");
+    assertEquals("Work", myCategory.getName());
   }
 
+  // public void Category_hasNoTasksWhenInstantiated_true() {
+  //   Category myCategory = new Category("Work");
+  //
+  // }
 
 }
 
