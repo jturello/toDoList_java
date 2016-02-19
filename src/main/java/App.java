@@ -53,9 +53,13 @@ public class App {
       }
 
       String description = request.queryParams("description");
-      Task newTask = new Task(description);
-
-      tasks.add(newTask);
+      if (description.length() > 0) {
+        Task newTask = new Task(description);
+        tasks.add(newTask);
+        model.put("successFailMessage", "Your task has been saved.");
+      } else {
+        model.put("successFailMessage", "No entry made. Please try again.");
+      }
 
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);

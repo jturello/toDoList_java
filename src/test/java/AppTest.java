@@ -45,6 +45,27 @@ public class AppTest extends FluentTest {
       }
 
     @Test
+    public void taskNotAddedWhenDescriptionBlank_true() {
+      goTo("http://localhost:4567/tasks");
+      String tasksPageBefore = pageSource();
+      goTo("http://localhost:4567/tasks/new");
+      // fill("#description").with("Mow the lawn");
+      submit(".btn");
+      click("a", withText("View tasks"));
+      assertThat(pageSource()).isEqualTo(tasksPageBefore);
+    }
+
+    @Test
+    public void taskFailMessageDisplaysWhenDescriptionEnteredIsBlank_true() {
+      goTo("http://localhost:4567/tasks");
+      String tasksPageBefore = pageSource();
+      goTo("http://localhost:4567/tasks/new");
+      // fill("#description").with("Mow the lawn");
+      submit(".btn");
+      assertThat(pageSource()).contains("Please try again");
+    }
+
+    @Test
     public void multipleTasksAreDisplayedTest() {
       goTo("http://localhost:4567/tasks/new");
       fill("#description").with("Mow the lawn");
